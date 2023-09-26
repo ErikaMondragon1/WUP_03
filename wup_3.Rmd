@@ -53,6 +53,12 @@ This boxplot show the amount of alcohol based on where you sit. Those who sit in
 
 ## Numerical Summarys 
 
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
+
+This data shows the mean and median of the alcohol consumed in the back, middle and front seats. Those who sit in the back seats drink at least three times than those who sit in the middle and front seats. 
+
 ## Inferential Tests
 
 ## Conclusions
