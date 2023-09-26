@@ -24,7 +24,7 @@ $H_A$: There is a difference in the alcohol consumed based the row you sit in
 
 # Methods
 
-The response variable is numerical and the the explanatory variable is categorical. Alcohol  is a numerical, seat is numerical. We will use the numerical cat file. 
+The response variable is numerical and the the explanatory variable is categorical. Alcohol  is a numerical, seat is numerical. We will use the numerical~cat file. 
 
 ## Results 
 
@@ -49,7 +49,7 @@ The graph shows the amount of alcohol consumed. In the backseats they drink the 
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
 
-This boxplot show the amount of alcohol based on where you sit. Those who sit in the back seats consume the most alcohol. While those in the middle seat drink a little more than those in the front seats. 
+This boxplot show the amount of alcohol based on where you sit. Those who sit in the back seats consume the most alcohol. While those in the middle seat drink around the same amount as those in the front seats. 
 
 ## Numerical Summarys 
 
@@ -61,6 +61,20 @@ This data shows the mean and median of the alcohol consumed in the back, middle 
 
 ## Inferential Tests
 
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+The p-value is 0.000116, which is lower than 0.5. Therefore, we reject the null hypothesis. This means that there is a difference in the alcohol consumed based on the row a person sits in. 
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+We don't have the evidence that there is a difference in the alcohol consumption between the middle and front rows. The only difference found is that the back rows consumes more alcohol than the front and middle rows. 
+
 ## Conclusions
 
+The original question was, is there a difference between the alcohol consumed between the row you choose to sit in? Yes, there is a difference between the alcohol consumed based on where a person sits in. Since the p-value is 0.000116, which is lower than 0.5, we reject the null hypothesis. Based on the evidence, we conclude that there is a difference in the alcohol consumed based on the row a person sits in. 
 
